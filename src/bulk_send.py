@@ -120,7 +120,7 @@ def run_bulk_send(indexer_client, node_client):
 
     print("\nProceeding with bulk_send...")
 
-    asset_ids = find_nfts_in_wallet(idx_client)
+    asset_ids = find_nfts_in_wallet(indexer_client)
 
     if not user_will_continue("Are these the NFTs you want to send? [y/N]"):
         print("Bulk send cancelled")
@@ -136,7 +136,7 @@ if __name__ == "__main__":
 
     idx_client = indexer.IndexerClient(indexer_token="",
                                        indexer_address=MAINNET_INDEXER_API)
-    node_client = algod.AlgodClient(algod_token="",
-                                    algod_address=MAINNET_NODE_API)
+    algod_client = algod.AlgodClient(algod_token="",
+                                     algod_address=MAINNET_NODE_API)
 
-    run_bulk_send(idx_client, node_client)
+    run_bulk_send(idx_client, algod_client)
